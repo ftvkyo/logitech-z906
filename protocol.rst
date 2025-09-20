@@ -25,7 +25,7 @@ The checksum is verified by calculating the U8 sum of all bytes from the type
 
 Communication is represented as follows:
 
-.. code-block:: none
+.. code-block:: diff
 
    > Message from console to amplifier
    < Message from amplifier to console
@@ -42,7 +42,7 @@ Status commands
 Read status/configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 34
    < AA
@@ -78,7 +78,7 @@ will become over 24 days which would normally result in an automatic standby
 occurring. It will also overwrite the digital signal status with the console's
 value until it next changes.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 34
    > AA
@@ -156,7 +156,7 @@ Reset idle time
 Sent liberally by the console whenever user input is provided. Resets the idle
 time maintained by the amplifier.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 30
    < 30
@@ -171,7 +171,7 @@ this command every 60 seconds after the last user input.
 If automatic standby is enabled and the time is reached the console will turn
 the power off.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 31
    < 31
@@ -189,7 +189,7 @@ the input. Silence is 0 and it looks like it goes up to 1,000,000 with some
 maximum amplitude square waves. Normal values are around 1,000 to 2,000. Above a
 certain volume the idle time will be reset and held at 0.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 2F
    < 2F
@@ -205,7 +205,7 @@ Read temperature
 The console doesn't use this command, but you can find out the current
 temperature in the amplifier.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 25
    < 25
@@ -231,7 +231,7 @@ be possible to power on with the `Headphones connected`_ sequence in its place.
 The amplifier will power on with the currently configured input active, but the
 effect is sent by the console automatically (`Effect selection`_).
 
-.. code-block:: none
+.. code-block:: diff
 
    > 11 11
    > XX (effect selection)
@@ -249,7 +249,7 @@ The ``37`` command's purpose is unknown.
 
 Sends `Read status/configuration`_ at the end to update the console state.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 30 37 36
    < 30 37 36
@@ -259,7 +259,7 @@ Sends `Read status/configuration`_ at the end to update the console state.
 Headphones connected
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 10 10
    > 3F (effect selection)
@@ -269,7 +269,7 @@ Headphones connected
 Headphones disconnected
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 11 11
    > XX (effect selection)
@@ -289,7 +289,7 @@ Main volume up
 
 Turning the volume up above level 43 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 08
    < 08
@@ -299,7 +299,7 @@ Main volume down
 
 Turning the volume down below level 0 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09
    < 09
@@ -309,7 +309,7 @@ Mute
 
 Turn the volume down to level 0.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09
    > 09
@@ -321,7 +321,7 @@ Turn the volume down to level 0.
 The amplifier can also report a muted status (without changing the volume).
 When the volume is next adjusted the console will unmute immediately:
 
-.. code-block:: none
+.. code-block:: diff
 
    < 20
    ...
@@ -338,7 +338,7 @@ Unmute
 
 Turn the volume back up.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 38
    > 08
@@ -353,7 +353,7 @@ Turn the volume back up.
 
 The amplifier can also report an unmuted status (without changing the volume).
 
-.. code-block:: none
+.. code-block:: diff
 
    < 21
 
@@ -364,7 +364,7 @@ Subwoofer level up
 
 Turning the subwoofer level up above 43 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0A
    < 0A
@@ -374,7 +374,7 @@ Subwoofer level down
 
 Turning the subwoofer level down below 0 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0B
    < 0B
@@ -384,7 +384,7 @@ Centre level up
 
 Turning the centre level up above 43 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0C
    < 0C
@@ -394,7 +394,7 @@ Centre level down
 
 Turning the centre level down below 0 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0D
    < 0D
@@ -404,7 +404,7 @@ Rear level up
 
 Turning the rear level up above 43 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0E
    < 0E
@@ -414,7 +414,7 @@ Rear level down
 
 Turning the rear level down below 0 is ignored and no command is sent.
 
-.. code-block:: none
+.. code-block:: diff
 
    > 0F
    < 0F
@@ -430,7 +430,7 @@ The "decode" light turns on if there is a digital signal from inputs 3, 4 or 5.
 Input 1 (3.5mm TRS, 6 channels)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 02
@@ -445,7 +445,7 @@ Input 1 (3.5mm TRS, 6 channels)
 Input 2 (RCA, 2 channels)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 05
@@ -460,7 +460,7 @@ Input 2 (RCA, 2 channels)
 Input 3 (TOSLINK, S/PDIF optical fibre)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 03
@@ -476,7 +476,7 @@ Input 3 (TOSLINK, S/PDIF optical fibre)
 Input 4 (TOSLINK, S/PDIF optical fibre)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 04
@@ -492,7 +492,7 @@ Input 4 (TOSLINK, S/PDIF optical fibre)
 Input 5 (RCA, S/PDIF 75Ω coaxial)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 06
@@ -509,7 +509,7 @@ Input 5 (RCA, S/PDIF 75Ω coaxial)
 Input 6 (3.5mm TRS on the console, 2 channels)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 09 ... (mute)
    > 07
@@ -547,7 +547,7 @@ tested.
 3D effect
 ~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 14
    < 14
@@ -555,7 +555,7 @@ tested.
 4.1 effect
 ~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 15
    < 15
@@ -563,7 +563,7 @@ tested.
 2.1 effect
 ~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 16
    < 16
@@ -571,7 +571,7 @@ tested.
 Effect disabled
 ~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 35
    < 35
@@ -579,7 +579,7 @@ Effect disabled
 No effect, headphones
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > 3F
    < 3F
@@ -603,7 +603,7 @@ Start
 
 Enter speaker test mode and `Select test speaker`_ "front left".
 
-.. code-block:: none
+.. code-block:: diff
 
    > 36
    > 22
@@ -614,7 +614,7 @@ Enter speaker test mode and `Select test speaker`_ "front left".
 Select test speaker
 ~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: diff
 
    > AA
    > 07 = type
@@ -631,7 +631,7 @@ Stop
 Exit speaker test mode, `Select test speaker`_ "none" and restore the previously
 selected input (`Input selection`_).
 
-.. code-block:: none
+.. code-block:: diff
 
    > 33
    > AA 07 ... (Select test speaker: none)
@@ -646,7 +646,7 @@ While in standby hold down the "input" button for 8 seconds.
 
 Sends `Read status/configuration`_ at the end to update the console state.
 
-.. code-block:: none
+.. code-block:: diff
 
    > AA
    > 0E = type
@@ -678,7 +678,7 @@ light goes out). The setting will be toggled. The console will also send the
 current effect configuration in the wrong order so all of the effects set for
 the inputs will be changed.
 
-.. code-block:: none
+.. code-block:: diff
 
    > AA
    > 0E = type
